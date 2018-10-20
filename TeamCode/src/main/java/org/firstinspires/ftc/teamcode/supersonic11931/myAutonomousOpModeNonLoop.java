@@ -35,51 +35,21 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
 
 
         //When play is pressed, run motor to lower robot to ground
-        myRobot.lift.lowerFromLander();
+        //Robot.lift.lowerFromLander();
         //sleep(3000);
 
+        myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+        sleep(4000);
 
-        /*STEP 1: Determine robot location/basic program
-        The camera should start at a 50 degree angle in relation to the front of the robot
-        so that when it is rotated it will sense a target in the shortest amount of time
-        Begin rotating camera
-        Use an if statement to inform the robot of when a target is recognized
-        Once recognized, stop rotation
-        Read image using vuforia
-        Use pre-programmed vuforia code to determine location
-        */
-        myRobot.nav.trackTargets();
-        // TODO
-        // ...
+        myRobot.drive.driveManual(0.5f, 0.6f, 0.8f);
+        sleep(4000);
 
 
 
-        /*STEP 2: Get to depot
-        Using location info from previous step, input xyz cordinates into an array
-        Use equations to determine appropriate course to depot (ex. x=16, drive=x-4, distance to drive is 12 units)
-        Input distance variables and run drive code for robot
-        Robot should be appropriate distance depot to place team marker
-         */
-
-        /*STEP 3: Place team marker and go to crater
-        Run motor to extend lift
-        Release team marker
-        Adding distance variables to origin
-         */
-
-        /* STEP 4: Go to crater
-        Using equations, you should be able to identify your current location without finding another location target
-        Turn robot toward crater
-        Drive forward toward crater
-         */
-
-        //Identify gold mineral using color sensor
-        //Push gold mineral off area
-
-        //Drive partially into crater
 
 
 
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         myRobot.shutDown();
         telemetry.addData("Status", "Ruckus Robot successfully SHUT DOWN");
