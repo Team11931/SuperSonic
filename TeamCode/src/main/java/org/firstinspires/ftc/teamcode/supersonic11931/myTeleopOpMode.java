@@ -36,7 +36,7 @@ public class myTeleopOpMode extends LinearOpMode {
         // Loop until driver presses STOP from driver station
         while (opModeIsActive()) {
 
-            // Navigation target tracker...
+            // Navigation target  ...
             //myRobot.nav.trackTargets();
             //telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
 
@@ -45,11 +45,12 @@ public class myTeleopOpMode extends LinearOpMode {
             //telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
             //telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
 
+            /*
             // Drivetrain...
             // auto drive or manual drive?
             // In auto drive, the robot will approach any target it can see and then press against it
             // In manual drive the robot responds to the Joystick.
-            if (myRobot.nav.isTargetVisible() && gamepad1.left_bumper) {
+             if (myRobot.nav.isTargetVisible() && gamepad1.left_bumper) {
                 // myRobot.driveCruiseControl(); // calculate automatic target approach
                 myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x); // TODO: fix cruise control & swap with line above
 
@@ -57,12 +58,15 @@ public class myTeleopOpMode extends LinearOpMode {
                 // Drive the robot using the joysticks
                 myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
             }
+            */
+            myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
+            //myRobot.drive.driveManual_ALT(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
 
             // Arm...
-            //myRobot.arm.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
+            //myRobot.lift.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
 
             // Claw...
-            //myRobot.arm.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
+            //myRobot.lift.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
 
             // Sweeper...
             //myRobot.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);

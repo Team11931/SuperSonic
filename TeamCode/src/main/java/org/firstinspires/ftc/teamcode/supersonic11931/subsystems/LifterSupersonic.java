@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-public class ArmSupersonic {
+public class LifterSupersonic {
 
     public ClawSupersonic claw = null;
     private DcMotor armDrive = null;
@@ -12,7 +12,7 @@ public class ArmSupersonic {
 
 
     // Constructor method
-    public ArmSupersonic(DcMotor a, Servo c){
+    public LifterSupersonic(DcMotor a, Servo c){
 
         armDrive = a;
         claw = new ClawSupersonic(c);
@@ -23,20 +23,20 @@ public class ArmSupersonic {
     // For TeleOp mode
     public void runArm(boolean button1, boolean button2)
     {
-        // TODO: arm code
+        // TODO: lift code
 
     }
 
 
     public void lowerFromLander()
     {
-        // TODO: arm & claw code
+        // TODO: lift & claw code
 
     }
 
     public void shutDown()
     {
-        // Stop arm
+        // Stop lift
         armDrive.setPower(0);
     }
 

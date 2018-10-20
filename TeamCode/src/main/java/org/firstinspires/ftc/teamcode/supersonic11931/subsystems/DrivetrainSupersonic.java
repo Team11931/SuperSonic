@@ -63,12 +63,12 @@ public class DrivetrainSupersonic {
         double strafe = s;
         double twist  = t;
 
-        frontLeftPower = Range.clip(drive + strafe + twist, -1.0, 1.0) ;
-        //frontLeftPower = Range.clip(drive - strafe + twist, -1.0, 1.0) ;
-        frontRightPower = Range.clip(drive - strafe - twist, -1.0, 1.0) ;
-        rearLeftPower = Range.clip(drive - strafe + twist, -1.0, 1.0) ;
-        //rearLeftPower = Range.clip(drive + strafe + twist, -1.0, 1.0)
-        rearRightPower = Range.clip(drive + strafe - twist, -1.0, 1.0) ;
+        //frontLeftPower = Range.clip(drive + strafe + twist, -1.0, 1.0) ;
+        frontLeftPower = Range.clip(drive - strafe + twist, -1.0, 1.0);
+        frontRightPower = Range.clip(drive - strafe - twist, -1.0, 1.0);
+        //rearLeftPower = Range.clip(drive - strafe + twist, -1.0, 1.0) ;
+        rearLeftPower = Range.clip(drive + strafe + twist, -1.0, 1.0);
+        rearRightPower = Range.clip(drive + strafe - twist, -1.0, 1.0);
 
         frontLeftMotor.setPower(frontLeftPower);
         frontRightMotor.setPower(frontRightPower);
@@ -88,9 +88,9 @@ public class DrivetrainSupersonic {
         double robotAngle = Math.atan2(d, s) - Math.PI / 4;
         double rightX = t;
 
-        frontLeftPower = r * Math.cos(robotAngle) + rightX;
+        frontLeftPower = -r * Math.cos(robotAngle) + rightX;
         frontRightPower = r * Math.sin(robotAngle) - rightX;
-        rearLeftPower = r * Math.sin(robotAngle) + rightX;
+        rearLeftPower = -r * Math.sin(robotAngle) + rightX;
         rearRightPower = r * Math.cos(robotAngle) - rightX;
 
         frontLeftMotor.setPower(frontLeftPower);

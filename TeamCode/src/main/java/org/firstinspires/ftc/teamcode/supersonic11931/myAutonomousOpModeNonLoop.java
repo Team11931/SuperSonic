@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.supersonic11931;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.lang.InterruptedException;
 
@@ -36,7 +35,7 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
 
 
         //When play is pressed, run motor to lower robot to ground
-        myRobot.arm.lowerFromLander();
+        myRobot.lift.lowerFromLander();
         //sleep(3000);
 
 
@@ -63,7 +62,7 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
          */
 
         /*STEP 3: Place team marker and go to crater
-        Run motor to extend arm
+        Run motor to extend lift
         Release team marker
         Adding distance variables to origin
          */
