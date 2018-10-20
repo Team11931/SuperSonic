@@ -10,6 +10,8 @@ import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorSensorSupe
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.DrivetrainSupersonic;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.NavigationSupersonic;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.SweeperSupersonic;
+import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 /**
  * This is NOT an opmode.
@@ -33,10 +35,10 @@ public class SupersonicRuckusRobot {
 
         // Initialize robot components
         // Init Nav (navigation target tracker)
-        // nav = new NavigationSupersonic(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
+        nav = new NavigationSupersonic(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
 
         // Init color / distance sensor
-        //color = new ColorSensorSupersonic(hw.get(ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
+        color = new ColorSensorSupersonic(hw.get(ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
 
         // Init drivetrain
         drive = new DrivetrainSupersonic(
@@ -58,8 +60,8 @@ public class SupersonicRuckusRobot {
 
         // Shut down all robot components
         drive.shutDown();
-        //nav.shutDown();
-        //color.shutDown();
+        nav.shutDown();
+        color.shutDown();
         //sweeper.shutDown();
 
     }

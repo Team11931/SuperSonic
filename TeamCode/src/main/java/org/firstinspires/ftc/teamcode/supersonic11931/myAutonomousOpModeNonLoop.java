@@ -39,12 +39,13 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
         //sleep(3000);
 
         myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+        sleep(2000);
+
+        myRobot.drive.driveManual(0.0f, 0.4f, 0.4f);
+        sleep(1000);
+
+        myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
         sleep(4000);
-
-        myRobot.drive.driveManual(0.5f, 0.6f, 0.8f);
-        sleep(4000);
-
-
 
 
 

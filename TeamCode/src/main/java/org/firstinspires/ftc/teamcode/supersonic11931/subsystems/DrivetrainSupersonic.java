@@ -55,6 +55,7 @@ public class DrivetrainSupersonic {
     }
 
 
+    /*
     public void driveManual(float d, float s, float t){
 
         // Mecanum drive is controlled with three axes: drive (front-and-back),
@@ -76,21 +77,20 @@ public class DrivetrainSupersonic {
         rearRightMotor.setPower(rearRightPower);
 
     }
+    */
 
 
-    public void driveManual_ALT(float d, float s, float t)
+    public void driveManual(float d, float s, float t)
     {
         // Mecanum drive is controlled with three axes: drive (front-and-back),
         // strafe (left-and-right), and twist (rotating the whole chassis).
-
-        // Tyler's ALT code
-        double r = Math.hypot(s, d);
-        double robotAngle = Math.atan2(d, s) - Math.PI / 4;
+        double r = Math.hypot(-s, d);
+        double robotAngle = Math.atan2(d, -s) - Math.PI / 4;
         double rightX = t;
 
-        frontLeftPower = -r * Math.cos(robotAngle) + rightX;
+        frontLeftPower = -(r * Math.cos(robotAngle) + rightX);
         frontRightPower = r * Math.sin(robotAngle) - rightX;
-        rearLeftPower = -r * Math.sin(robotAngle) + rightX;
+        rearLeftPower = -(r * Math.sin(robotAngle) + rightX);
         rearRightPower = r * Math.cos(robotAngle) - rightX;
 
         frontLeftMotor.setPower(frontLeftPower);

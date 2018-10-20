@@ -37,13 +37,13 @@ public class myTeleopOpMode extends LinearOpMode {
         while (opModeIsActive()) {
 
             // Navigation target  ...
-            //myRobot.nav.trackTargets();
-            //telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
+            myRobot.nav.trackTargets();
+            telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
 
             // Color & distance sensor...
-            //myRobot.color.trackColors();
-            //telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
-            //telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
+            myRobot.color.trackColors();
+            telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
+            telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
 
             /*
             // Drivetrain...
@@ -60,7 +60,6 @@ public class myTeleopOpMode extends LinearOpMode {
             }
             */
             myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
-            //myRobot.drive.driveManual_ALT(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
 
             // Arm...
             //myRobot.lift.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
