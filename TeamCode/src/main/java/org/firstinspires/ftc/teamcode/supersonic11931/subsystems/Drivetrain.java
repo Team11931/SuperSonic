@@ -92,6 +92,7 @@ public class Drivetrain {
         if (slow)
         {
             velocity *= SLOW_MOTION;
+            rotation *= SLOW_MOTION;
         }
 
         frontLeftPower = -(velocity * Math.cos(course) + rotation);
