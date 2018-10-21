@@ -8,7 +8,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import java.util.Locale;
 
 
-public class ColorSensorSupersonic {
+public class ColorDistanceSensor {
 
     /**
      * Note that the REV Robotics Color-Distance incorporates two sensors into one device.
@@ -27,14 +27,14 @@ public class ColorSensorSupersonic {
      * to the target object.  Note that the distance sensor saturates at around 2" (5 cm).
      *
      */
-    public ColorSensor sensorColor;
+    public com.qualcomm.robotcore.hardware.ColorSensor sensorColor;
     public DistanceSensor sensorDistance;
 
     private float hsvValues[] = {0F, 0F, 0F}; // hsvValues is an array that will hold the hue, saturation, and value information.
     private final double SCALE_FACTOR = 255; // sometimes it helps to multiply the raw RGB values with a scale factor to amplify/attentuate the measured values.
 
     //constructor
-    public ColorSensorSupersonic(ColorSensor c, DistanceSensor d) {
+    public ColorDistanceSensor(com.qualcomm.robotcore.hardware.ColorSensor c, DistanceSensor d) {
 
         // get a reference to the color sensor.
         sensorColor = c;

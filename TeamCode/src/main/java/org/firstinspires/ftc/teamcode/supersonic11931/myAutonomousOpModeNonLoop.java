@@ -35,7 +35,7 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
 
 
         //When play is pressed, run motor to lower robot to ground
-        //Robot.lift.lowerFromLander();
+        //Robot.land.lowerFromLander();
         //sleep(3000);
 
         myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);

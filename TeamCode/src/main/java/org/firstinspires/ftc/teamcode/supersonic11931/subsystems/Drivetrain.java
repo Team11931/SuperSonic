@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.util.Range;
  * MECANUM drive
  *
  **/
-public class DrivetrainSupersonic {
+public class Drivetrain {
 
     private DcMotor frontLeftMotor = null;
     private DcMotor frontRightMotor = null;
@@ -22,6 +22,7 @@ public class DrivetrainSupersonic {
     private double frontRightPower;
     private double rearLeftPower;
     private double rearRightPower;
+    private final float SLOW_MOTION = 0.4f;
 
 
     /*
@@ -45,7 +46,7 @@ public class DrivetrainSupersonic {
 
 
     // Constructor method
-    public DrivetrainSupersonic(DcMotor lfm, DcMotor rfm, DcMotor lrm, DcMotor rrm) {
+    public Drivetrain(DcMotor lfm, DcMotor rfm, DcMotor lrm, DcMotor rrm) {
 
         frontLeftMotor = lfm;
         frontRightMotor = rfm;
@@ -80,23 +81,34 @@ public class DrivetrainSupersonic {
     */
 
 
-    public void driveManual(float d, float s, float t)
+    public void driveManual(float d, float s, float t, boolean slow)
     {
         // Mecanum drive is controlled with three axes: drive (front-and-back),
         // strafe (left-and-right), and twist (rotating the whole chassis).
-        double r = Math.hypot(-s, d);
-        double robotAngle = Math.atan2(d, -s) - Math.PI / 4;
-        double rightX = t;
+        double velocity = Math.hypot(-s, d);
+        double course = Math.atan2(d, -s) - Math.PI / 4;
+        double rotation = t;
 
-        frontLeftPower = -(r * Math.cos(robotAngle) + rightX);
-        frontRightPower = r * Math.sin(robotAngle) - rightX;
-        rearLeftPower = -(r * Math.sin(robotAngle) + rightX);
-        rearRightPower = r * Math.cos(robotAngle) - rightX;
+        if (slow)
+        {
+            velocity *= SLOW_MOTION;
+        }
+
+        frontLeftPower = -(velocity * Math.cos(course) + rotation);
+        frontRightPower = velocity * Math.sin(course) - rotation;
+        rearLeftPower = -(velocity * Math.sin(course) + rotation);
+        rearRightPower = velocity * Math.cos(course) - rotation;
 
         frontLeftMotor.setPower(frontLeftPower);
         frontRightMotor.setPower(frontRightPower);
         rearLeftMotor.setPower(rearLeftPower);
         rearRightMotor.setPower(rearRightPower);
+    }
+
+
+    public void driveManual(float d, float s, float t)
+    {
+        this.driveManual(d, s, t, false);
     }
 
 

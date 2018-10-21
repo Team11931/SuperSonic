@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.supersonic11931.subsystems;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-public class SweeperSupersonic {
+public class Sweeper {
 
     private DcMotor sweeperDrive = null;
     private LinearOpMode opMode;
@@ -13,7 +13,7 @@ public class SweeperSupersonic {
 
 
     // Constructor method
-    public SweeperSupersonic(DcMotor m){
+    public Sweeper(DcMotor m){
 
         sweeperDrive = m;
 

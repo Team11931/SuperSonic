@@ -67,7 +67,7 @@ public class myAutonomousOpMode extends LinearOpMode {
              */
 
             /*STEP 3: Place team marker and go to crater
-            Run motor to extend lift
+            Run motor to extend land
             Release team marker
             Adding distance variables to origin
              */
@@ -87,7 +87,7 @@ public class myAutonomousOpMode extends LinearOpMode {
             // Use State Machine
             switch (state) {
                 case LANDING:
-                    myRobot.lift.lowerFromLander();
+                    myRobot.land.lowerFromLander();
                     if (this.myRobot.isLanded) {state = STATE.DRIVING_TO_DEPOT;}
                     break;
 

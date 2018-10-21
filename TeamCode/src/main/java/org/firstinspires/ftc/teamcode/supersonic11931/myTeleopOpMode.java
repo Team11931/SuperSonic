@@ -59,16 +59,19 @@ public class myTeleopOpMode extends LinearOpMode {
                 myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
             }
             */
-            myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
+            myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
 
-            // Arm...
-            //myRobot.lift.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
+            // Lander Arm...
+            //myRobot.land.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
 
-            // Claw...
-            //myRobot.lift.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
+            // LanderClaw...
+            //myRobot.land.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
+
+            // Collector Arm...
+            //myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
 
             // Sweeper...
-            //myRobot.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
+            // myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
 
             telemetry.update();
         }

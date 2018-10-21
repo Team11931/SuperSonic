@@ -3,14 +3,16 @@ package org.firstinspires.ftc.teamcode.supersonic11931;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.LifterSupersonic;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorSensorSupersonic;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.DrivetrainSupersonic;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.NavigationSupersonic;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.SweeperSupersonic;
-import com.qualcomm.robotcore.hardware.ColorSensor;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.CollectorArm;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.LanderArm;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSensor;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Sweeper;
+
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 
 /**
@@ -23,11 +25,11 @@ public class SupersonicRuckusRobot {
 
     public boolean isLanded = false;
 
-    public NavigationSupersonic nav;
-    public DrivetrainSupersonic drive;
-    public LifterSupersonic lift;
-    public ColorSensorSupersonic color;
-    public SweeperSupersonic sweeper;
+    public Navigation nav;
+    public Drivetrain drive;
+    public LanderArm land;
+    public ColorDistanceSensor color;
+    public CollectorArm collect;
 
 
     // Constructor method
@@ -35,25 +37,24 @@ public class SupersonicRuckusRobot {
 
         // Initialize robot components
         // Init Nav (navigation target tracker)
-        nav = new NavigationSupersonic(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
+        nav = new Navigation(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
 
         // Init color / distance sensor
-        color = new ColorSensorSupersonic(hw.get(ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
+        color = new ColorDistanceSensor(hw.get(com.qualcomm.robotcore.hardware.ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
 
         // Init drivetrain
-        drive = new DrivetrainSupersonic(
+        drive = new Drivetrain(
             hw.get(DcMotor.class, "leftFront"),
             hw.get(DcMotor.class, "rightFront"),
             hw.get(DcMotor.class, "leftRear"),
             hw.get(DcMotor.class, "rightRear")
         );
 
-        // Init lifter
-        //lift = new LifterSupersonic(hw.get(DcMotor.class, "arm_drive"), hw.get(Servo.class, "claw_drive"));
+        // Init lander
+        // land = new LanderArm(hw.get(DcMotor.class, "lander_arm_drive"), hw.get(Servo.class, "claw_drive"));
 
-        // Init sweeper
-        //sweeper = new SweeperSupersonic(hw.get(DcMotor.class, "sweeper_drive"));
-
+        // Init collector
+        //collect = new CollectorArm(hw.get(DcMotor.class, "collector_arn_drive"), hw.get(DcMotor.class, "sweeper_drive"));
     }
 
     public void shutDown(){
@@ -62,7 +63,7 @@ public class SupersonicRuckusRobot {
         drive.shutDown();
         nav.shutDown();
         color.shutDown();
-        //sweeper.shutDown();
+        //collect.shutDown();
 
     }
 

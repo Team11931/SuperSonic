@@ -25,7 +25,7 @@ import java.util.List;
  * This class defines all the logic for the Vuforia target tracker.
  *
  **/
-public class NavigationSupersonic {
+public class Navigation {
 
     private boolean targetVisible = false;
     private String visibleTarget = "none";
@@ -45,7 +45,7 @@ public class NavigationSupersonic {
 
 
     // Constructor method
-    public NavigationSupersonic(int cameraMonitorViewId) {
+    public Navigation(int cameraMonitorViewId) {
 
         //int cameraMonitorViewId = opMode.hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", opMode.hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId); // With camera preview

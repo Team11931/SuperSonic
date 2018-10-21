@@ -3,13 +3,13 @@ package org.firstinspires.ftc.teamcode.supersonic11931.subsystems;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
-public class ClawSupersonic {
+public class LanderClaw {
 
     private Servo clawDrive = null;
 
 
     // Constructor method
-    public ClawSupersonic(Servo c){
+    public LanderClaw(Servo c){
 
         clawDrive = c;
 
