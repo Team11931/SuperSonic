@@ -53,12 +53,11 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
          myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
         sleep(1500);
 
-        // Start tracking
-        myRobot.nav.trackTargets();
 
-        // Spinning
+        // Start tracking and spinning
         while (!myRobot.nav.isTargetVisible())
         {
+            myRobot.nav.trackTargets();
             myRobot.drive.driveManual(0.0f, 0.0f, -0.25f);
         }
 
