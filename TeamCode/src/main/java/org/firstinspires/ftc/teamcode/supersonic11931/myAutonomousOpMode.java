@@ -83,7 +83,7 @@ public class myAutonomousOpMode extends LinearOpMode {
 
             //Drive partially into crater
 
-
+myRobot.nav.getVisibleTarget();
             // Use State Machine
             switch (state) {
                 case LANDING:

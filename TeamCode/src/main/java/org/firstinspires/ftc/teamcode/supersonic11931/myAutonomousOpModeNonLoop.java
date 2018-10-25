@@ -50,12 +50,44 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
 
         // Robot Drops from lander *Todo
 
-         myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
+         myRobot.drive.driveManual(-0.25f, 0.0f, 0.0f);
         sleep(1500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.25f);
+        sleep(1500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(-0.3f, 0.0f, 0.0f);
+        sleep(2000);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.25f);
+        sleep(1500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(-0.25f, 0.0f, 0.0f);
+        sleep(2000);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.25f);
+        sleep(1500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        myRobot.drive.driveManual(-0.5f, 0.0f, 0.0f);
+        sleep(4000);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
 
         // Start tracking and spinning
-        while (!myRobot.nav.isTargetVisible())
+        /*while (!myRobot.nav.isTargetVisible())
         {
             myRobot.nav.trackTargets();
             myRobot.drive.driveManual(0.0f, 0.0f, -0.25f);
@@ -65,17 +97,29 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         // Drive forward to move away from lander for 4 seconds
-        myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+        myRobot.drive.driveManual(-0.5f, 0.0f, 0.0f);
         sleep(2000);
 
+        //Stop driving
         myRobot.drive.driveManual(0.0f,0.0f,0.0f);
 
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.25f);
+        sleep(1500);
+
+        myRobot.drive.driveManual(-0.5f, 0.0f, 0.0f);
+        sleep(2500);
+
+
+
+        //Spin
+        //myRobot.drive.driveManual(0.0f, 0.0f, -0.3f);
+
+*/
 
 
 /*STEP 1: Determine robot location/basic program
-            The camera should start at a 50 degree angle in relation to the front of the robot
-            so that when it is rotated it will sense a target in the shortest amount of time
-            Begin rotating camera
+            Begin rotating robot at a slow speed
+
             Use an if statement to inform the robot of when a target is recognized
             Once recognized, stop rotation
             Read image using vuforia
@@ -108,7 +152,7 @@ public class myAutonomousOpModeNonLoop extends LinearOpMode {
 
 
 
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+        //myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         myRobot.shutDown();
         telemetry.addData("Status", "Ruckus Robot successfully SHUT DOWN");
