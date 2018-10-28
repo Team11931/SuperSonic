@@ -92,27 +92,27 @@ public class myAutonomousOpMode extends LinearOpMode {
 
                 case DRIVING_TO_DEPOT:
                     myRobot.nav.trackTargets();
-                    // todo
+                    // ...
                     break;
 
                 case CLAIMING:
-                    // todo
+                    // ...
                     break;
 
                 case SAMPLING:
-                    // todo
+                    // ...
                     break;
 
                 case DRIVING_TO_CRATER:
-                    // todo
+                    // ...
                     break;
 
                 case PARKING:
-                    // todo
+                    // ...
                     break;
 
                 default:
-                    // todo
+                    // ...
 
                     state = STATE.COMPLETE;
                     break;

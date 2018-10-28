@@ -23,8 +23,6 @@ public class CollectorArm {
     // For TeleOp mode
     public void runArm(boolean button1, boolean button2)
     {
-        // TODO: land code
-
 
     }
 

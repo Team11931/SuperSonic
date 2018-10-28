@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSe
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Sweeper;
+import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 
@@ -47,7 +48,8 @@ public class SupersonicRuckusRobot {
             hw.get(DcMotor.class, "leftFront"),
             hw.get(DcMotor.class, "rightFront"),
             hw.get(DcMotor.class, "leftRear"),
-            hw.get(DcMotor.class, "rightRear")
+            hw.get(DcMotor.class, "rightRear"),
+            hw.get(BNO055IMU.class, "imu")
         );
 
         // Init lander

@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.supersonic11931;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
@@ -26,6 +25,10 @@ public class myTeleopOpMode extends LinearOpMode {
         telemetry.update();
 
         myRobot = new SupersonicRuckusRobot(this.hardwareMap); // instantiate robot object
+        while (!myRobot.drive.isGyroCalibrated())
+        {
+            sleep(1000);
+        }
         telemetry.addData("Status", "Ruckus Robot successfully INITIALIZED; waiting for start");
         telemetry.update();
 
@@ -45,24 +48,36 @@ public class myTeleopOpMode extends LinearOpMode {
             telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
             telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
 
+
             /*
-            // Drivetrain...
-            // auto drive or manual drive?
+            // Drivetrain... auto drive (CRUISE CONTROL) or manual drive? Regular or arcade mode?
             // In auto drive, the robot will approach any target it can see and then press against it
             // In manual drive the robot responds to the Joystick.
              if (myRobot.nav.isTargetVisible() && gamepad1.left_bumper) {
-                // myRobot.driveCruiseControl(); // calculate automatic target approach
-                myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x); // TODO: fix cruise control & swap with line above
+                myRobot.drive.driveCruiseControl(); // calculate automatic target approach
 
             } else {
                 // Drive the robot using the joysticks
-                myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x);
+                // NOTE: ARCADE MODE CURRENTLY HARDCODED TO FALSE IN DRIVETRAIN, AS ARCADE MODE METHOD NOT WORKING AS INTENDED
+                if (myRobot.drive.arcadeMode)
+                {
+                    myRobot.drive.driveManualArcade(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
+                }
+                else
+                {
+                    myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
+                }
             }
             */
+
+
+            myRobot.drive.refreshGyro();
+            telemetry.addData("IMU Angle", myRobot.drive.getHeadingDegrees());
             myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
 
+
             // Lander Arm...
-            //myRobot.land.runArm(this.gamepad1.dpad_up, this.gamepad1.dpad_down);
+            myRobot.land.runArm(this.gamepad2.left_stick_y);
 
             // LanderClaw...
             //myRobot.land.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
