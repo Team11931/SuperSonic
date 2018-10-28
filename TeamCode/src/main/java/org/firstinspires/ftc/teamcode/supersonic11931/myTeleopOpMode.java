@@ -39,9 +39,8 @@ public class myTeleopOpMode extends LinearOpMode {
         // Loop until driver presses STOP from driver station
         while (opModeIsActive()) {
 
-            // Navigation target  ...
-            myRobot.nav.trackTargets();
-            telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
+            // NaRobot.nav.trackTargets();
+            //telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
 
             // Color & distance sensor...
             myRobot.color.trackColors();
@@ -49,7 +48,8 @@ public class myTeleopOpMode extends LinearOpMode {
             telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
 
 
-            /*
+            /*vigation target  ...
+            //my
             // Drivetrain... auto drive (CRUISE CONTROL) or manual drive? Regular or arcade mode?
             // In auto drive, the robot will approach any target it can see and then press against it
             // In manual drive the robot responds to the Joystick.
@@ -77,16 +77,16 @@ public class myTeleopOpMode extends LinearOpMode {
 
 
             // Lander Arm...
-            myRobot.land.runArm(this.gamepad2.left_stick_y);
+           myRobot.land.runArm(this.gamepad2.left_stick_y);
 
             // LanderClaw...
             //myRobot.land.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
 
             // Collector Arm...
-            //myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
+            myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
 
             // Sweeper...
-            // myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
+             myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
 
             telemetry.update();
         }

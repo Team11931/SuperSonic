@@ -34,7 +34,7 @@ public class SupersonicRuckusRobot {
 
 
     // Constructor method
-    SupersonicRuckusRobot(HardwareMap hw){
+    SupersonicRuckusRobot(HardwareMap hw) {
 
         // Initialize robot components
         // Init Nav (navigation target tracker)
@@ -45,27 +45,29 @@ public class SupersonicRuckusRobot {
 
         // Init drivetrain
         drive = new Drivetrain(
-            hw.get(DcMotor.class, "leftFront"),
-            hw.get(DcMotor.class, "rightFront"),
-            hw.get(DcMotor.class, "leftRear"),
-            hw.get(DcMotor.class, "rightRear"),
-            hw.get(BNO055IMU.class, "imu")
+                hw.get(DcMotor.class, "leftFront"),
+                hw.get(DcMotor.class, "rightFront"),
+                hw.get(DcMotor.class, "leftRear"),
+                hw.get(DcMotor.class, "rightRear"),
+                hw.get(BNO055IMU.class, "imu")
         );
 
         // Init lander
-        // land = new LanderArm(hw.get(DcMotor.class, "lander_arm_drive"), hw.get(Servo.class, "claw_drive"));
+        land = new LanderArm(hw.get(DcMotor.class, "lander_arm_drive"));
 
         // Init collector
-        //collect = new CollectorArm(hw.get(DcMotor.class, "collector_arn_drive"), hw.get(DcMotor.class, "sweeper_drive"));
+        collect = new CollectorArm(hw.get(DcMotor.class, "collector_arn_drive"), hw.get(DcMotor.class, "sweeper_drive"));
     }
+
 
     public void shutDown(){
 
         // Shut down all robot components
-        drive.shutDown();
+       drive.shutDown();
         nav.shutDown();
         color.shutDown();
-        //collect.shutDown();
+        land.shutDown();
+        collect.shutDown();
 
     }
 

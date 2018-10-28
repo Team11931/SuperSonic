@@ -22,9 +22,9 @@ public class LanderArm {
 
 
     // For TeleOp mode
-    public void runArm(float button1)
+    public void runArm(float joyStick)
     {
-
+        spinnyBoy.setPower(joyStick);
 
     }
 
