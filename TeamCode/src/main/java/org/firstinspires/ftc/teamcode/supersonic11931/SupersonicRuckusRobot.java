@@ -56,7 +56,7 @@ public class SupersonicRuckusRobot {
         land = new LanderArm(hw.get(DcMotor.class, "lander_arm_drive"));
 
         // Init collector
-        collect = new CollectorArm(hw.get(DcMotor.class, "collector_arn_drive"), hw.get(DcMotor.class, "sweeper_drive"));
+        // collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive"), hw.get(DcMotor.class, "sweeper_drive"));
     }
 
 
@@ -67,7 +67,7 @@ public class SupersonicRuckusRobot {
         nav.shutDown();
         color.shutDown();
         land.shutDown();
-        collect.shutDown();
+        //collect.shutDown();
 
     }
 

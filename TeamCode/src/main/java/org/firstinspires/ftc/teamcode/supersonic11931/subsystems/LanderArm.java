@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class LanderArm {
 
     //public LanderClaw claw = null;
-    private DcMotor spinnyBoy = null;
+    public DcMotor spinnyBoy = null;
 
 
 
@@ -16,6 +16,7 @@ public class LanderArm {
 
         spinnyBoy = a;
         //claw = new LanderClaw(c);
+
 
 
     }
@@ -29,9 +30,15 @@ public class LanderArm {
     }
 
 
+
     public void lowerFromLander()
     {
-        // TODO: lander & claw code... to automatically lower robot from lander
+        spinnyBoy.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        spinnyBoy.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        spinnyBoy.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        spinnyBoy.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //spinnyBoy.setTargetPosition();
+        spinnyBoy.setPower(0.25f);
 
     }
 

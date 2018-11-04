@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.supersonic11931;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
@@ -77,16 +79,19 @@ public class myTeleopOpMode extends LinearOpMode {
 
 
             // Lander Arm...
+           //myRobot.land.spinnyBoy.setMode(DcMotor.RunMode.RUN_USING_ENCODER); // TEMP
+          // myRobot.land.spinnyBoy.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); // TEMP
            myRobot.land.runArm(this.gamepad2.left_stick_y);
+          // telemetry.addData("Encoder position", myRobot.land.spinnyBoy.getCurrentPosition()); // TEMP
 
             // LanderClaw...
             //myRobot.land.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
 
             // Collector Arm...
-            myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
+            //myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
 
             // Sweeper...
-             myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
+             //myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
 
             telemetry.update();
         }
