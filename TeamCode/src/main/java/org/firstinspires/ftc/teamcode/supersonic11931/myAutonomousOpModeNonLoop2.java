@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.teamcode.supersonic11931;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
-
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
  * This IS an opmode.
@@ -34,24 +32,62 @@ public class myAutonomousOpModeNonLoop2 extends LinearOpMode {
 
 
         //When play is pressed, lower robot to ground
-        //Robot.land.lowerFromLander();
+        //myRobot.land.lowerFromLander();
         //sleep(3000);
 
 
         // Then, drive to crater
-        myRobot.drive.driveManual(0.0f, 0.2f, 0.0f);
-        sleep(250);
+        myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
+        sleep(300);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
-        sleep(750);
-
-
-
-
-        // When crater is reached, stop the robot
+        sleep(375);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
+        //Start sensing colors
+
+
+        //If center mineral is silver
+        /*if(myRobot.color.sensorColor.green() >= 18 ){
+
+            //Drive sideways to the left mineral
+            myRobot.drive.driveManual(0.5f, 0.4f, 0.0f);
+            sleep(200);
+            myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+
+
+            //If left mineral is silver/ if the right mineral is gold
+            if(myRobot.color.sensorColor.green() >= 18) {
+
+                //drive to far right mineral
+                myRobot.drive.driveManual(0.0f, -0.4f, 0.0f);
+                sleep(400);
+
+                //drive to crater
+                myRobot.drive.driveManual(0.4f,0.0f,0.0f);
+                sleep(500);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+            }
+
+            //If left mineral is gold
+            else {
+                //Drive to crater
+                myRobot.drive.driveManual(0.4f,0.0f,0.0f);
+                sleep(500);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+            }
+        }
+
+        //If center mineral is gold
+        if (myRobot.color.sensorColor.green() < 18){
+            //drive to crater
+            myRobot.drive.driveManual(0.4f,0.0f,0.0f);
+            sleep(300);
+            myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+        }
+*/
         myRobot.shutDown();
         telemetry.addData("Status", "Ruckus Robot successfully SHUT DOWN");
         telemetry.update();

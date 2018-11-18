@@ -4,11 +4,11 @@ package org.firstinspires.ftc.teamcode.supersonic11931;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.CollectorArm;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.LanderArm;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSensor;
+//import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSensor;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Sweeper;
@@ -28,9 +28,10 @@ public class SupersonicRuckusRobot {
 
     public Navigation nav;
     public Drivetrain drive;
-    public LanderArm land;
-    public ColorDistanceSensor color;
+    //public ColorDistanceSensor color;
     public CollectorArm collect;
+    public Sweeper sweep;
+
 
 
     // Constructor method
@@ -41,7 +42,7 @@ public class SupersonicRuckusRobot {
         nav = new Navigation(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
 
         // Init color / distance sensor
-        color = new ColorDistanceSensor(hw.get(com.qualcomm.robotcore.hardware.ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
+        //color = new ColorDistanceSensor(hw.get(com.qualcomm.robotcore.hardware.ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
 
         // Init drivetrain
         drive = new Drivetrain(
@@ -53,21 +54,22 @@ public class SupersonicRuckusRobot {
         );
 
         // Init lander
-        land = new LanderArm(hw.get(DcMotor.class, "lander_arm_drive"));
+
 
         // Init collector
-        // collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive"), hw.get(DcMotor.class, "sweeper_drive"));
+        collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive1"), (hw.get(DcMotor.class, "collector_arm_drive2")), (hw.get(DcMotor.class, "elbow_drive")));
+
+        sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"));
     }
 
 
     public void shutDown(){
 
         // Shut down all robot components
-       drive.shutDown();
+        drive.shutDown();
         nav.shutDown();
-        color.shutDown();
-        land.shutDown();
-        //collect.shutDown();
+        //color.shutDown();
+        collect.shutDown();
 
     }
 

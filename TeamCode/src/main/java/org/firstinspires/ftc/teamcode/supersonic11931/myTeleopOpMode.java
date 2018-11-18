@@ -45,9 +45,9 @@ public class myTeleopOpMode extends LinearOpMode {
             //telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
 
             // Color & distance sensor...
-            myRobot.color.trackColors();
-            telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
-            telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
+            //myRobot.color.trackColors();
+            //telemetry.addData("RGB", myRobot.color.sensorColor.red() + ", " + myRobot.color.sensorColor.green() + ", " + myRobot.color.sensorColor.blue());
+            //telemetry.addData("Distance (cm)", String.format(Locale.US, "%.02f", myRobot.color.sensorDistance.getDistance(DistanceUnit.CM)));
 
 
             /*vigation target  ...
@@ -64,6 +64,7 @@ public class myTeleopOpMode extends LinearOpMode {
                 if (myRobot.drive.arcadeMode)
                 {
                     myRobot.drive.driveManualArcade(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
+
                 }
                 else
                 {
@@ -77,21 +78,13 @@ public class myTeleopOpMode extends LinearOpMode {
             telemetry.addData("IMU Angle", myRobot.drive.getHeadingDegrees());
             myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
 
+            // Collector Arm....
+            myRobot.collect.runArm(this.gamepad2.left_stick_y);
+            myRobot.collect.runElbow(this.gamepad2.right_stick_y);
 
-            // Lander Arm...
-           //myRobot.land.spinnyBoy.setMode(DcMotor.RunMode.RUN_USING_ENCODER); // TEMP
-          // myRobot.land.spinnyBoy.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER); // TEMP
-           myRobot.land.runArm(this.gamepad2.left_stick_y);
-          // telemetry.addData("Encoder position", myRobot.land.spinnyBoy.getCurrentPosition()); // TEMP
 
-            // LanderClaw...
-            //myRobot.land.claw.runClaw(this.gamepad1.dpad_left, this.gamepad1.dpad_right);
-
-            // Collector Arm...
-            //myRobot.collect.runArm(this.gamepad1.a, this.gamepad1.b);
-
-            // Sweeper...
-             //myRobot.collect.sweeper.runSweeper(this.gamepad1.a, this.gamepad1.b);
+            // Sweeper....
+            myRobot.sweep.runSweeper(this.gamepad2.right_bumper, this.gamepad2.left_bumper);
 
             telemetry.update();
         }

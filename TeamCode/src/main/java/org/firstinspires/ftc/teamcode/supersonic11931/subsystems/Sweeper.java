@@ -2,49 +2,46 @@ package org.firstinspires.ftc.teamcode.supersonic11931.subsystems;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class Sweeper {
 
     private DcMotor sweeperDrive = null;
+    //private DcMotor sweeperDrive2 = null;
     private LinearOpMode opMode;
-    final double FORWARD = 1;
-    final double REVERSE = -1;
-    final double STOP = -1;
 
 
     // Constructor method
-    public Sweeper(DcMotor m){
+    public Sweeper(DcMotor m) {
 
         sweeperDrive = m;
+        //sweeperDrive2 = n;
 
     }
 
 
-    public void runSweeper(boolean button1, boolean button2)
-    {
-        boolean forward  = button1;
-        boolean reverse  = button2;
+    public void runSweeper(boolean r, boolean l) {
 
-        if (forward)
+        if (r)
         {
-            sweeperDrive.setPower(FORWARD);
+            sweeperDrive.setPower(1.0f);
         }
-        else if (reverse)
+        else if (l)
         {
-            sweeperDrive.setPower(REVERSE);
+            sweeperDrive.setPower(-1.0f);
         }
         else
         {
-            sweeperDrive.setPower(STOP);
+            sweeperDrive.setPower(0.0f);
         }
+
+
+
     }
-
-
-    public void shutDown()
-    {
-        // stop the motor
-        sweeperDrive.setPower(STOP);
-    }
-
-
 }
+
+
+    /*public void shutDown()
+    {
+
+    }*/

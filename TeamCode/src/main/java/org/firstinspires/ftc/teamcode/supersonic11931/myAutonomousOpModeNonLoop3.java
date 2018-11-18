@@ -18,7 +18,8 @@ public class myAutonomousOpModeNonLoop3 extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime(); // timer
     private final int AUTONOMOUS_DURATION = 30;
 
-    @Override public void runOpMode() throws InterruptedException {
+    @Override
+    public void runOpMode() throws InterruptedException {
 
         telemetry.addData("Status", "Ruckus Robot starting...");
         telemetry.update();
@@ -34,42 +35,46 @@ public class myAutonomousOpModeNonLoop3 extends LinearOpMode {
 
 
         //When play is pressed, lower robot to ground
-        //Robot.land.lowerFromLander();
+        //myRobot.land.lowerFromLander();
         //sleep(3000);
 
 
         // Then, drive to crater
 
-       myRobot.drive.driveManual(0.0f, 0.2f, 0.0f);
-       sleep(200);
-       myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.2f);
-        sleep(250);
+        myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
+        sleep(600);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
-        myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+        sleep(500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.1f);
         sleep(500);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.25f);
-        sleep(750);
+        sleep(500);
+
+        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
+        sleep(900);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
-        myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
-        sleep(1000);
+        sleep(500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.125f);
+        sleep(1050);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
+        sleep(500);
 
-
+        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
+        sleep(1400);
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         // When crater is reached, stop the robot
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         myRobot.shutDown();
+
         telemetry.addData("Status", "Ruckus Robot successfully SHUT DOWN");
         telemetry.update();
     }
-
-
 }
