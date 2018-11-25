@@ -62,7 +62,7 @@ public class SupersonicRuckusRobot {
         sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"));
 
         // Init Mineral Detector
-        mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
+        //mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
 
 
     }
@@ -75,7 +75,7 @@ public class SupersonicRuckusRobot {
         nav.shutDown();
         //color.shutDown();
         collect.shutDown();
-        mineral.shutDown();
+        //mineral.shutDown();
 
 
     }
