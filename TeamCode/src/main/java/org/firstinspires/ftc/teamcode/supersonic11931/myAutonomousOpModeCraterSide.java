@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;import com.qualcomm.
  * THIS IS THE MAIN CLASS FOR TEAM SUPERSONIC'S AUTONOMOUS MODE
  *
  **/
-@Autonomous(name="Supersonic Autonomous (Crater only)", group ="Supersonic")
+@Autonomous(name="Supersonic Autonomous (Crater Side)", group ="Supersonic")
 // @Disabled
-public class myAutonomousOpModeNonLoop2 extends LinearOpMode {
+public class myAutonomousOpModeCraterSide extends LinearOpMode {
 
     private SupersonicRuckusRobot myRobot;
     private ElapsedTime runtime = new ElapsedTime(); // timer
@@ -32,8 +32,23 @@ public class myAutonomousOpModeNonLoop2 extends LinearOpMode {
 
 
         //When play is pressed, lower robot to ground
-        //myRobot.land.lowerFromLander();
-        //sleep(3000);
+        //myRobot.collect.armDrive1.setPower(-1.0f);
+        //myRobot.collect.armDrive2.setPower(1.0f);
+        //sleep(1000);
+        //myRobot.collect.armDrive1.setPower(0.0f);
+        //myRobot.collect.armDrive2.setPower(0.0f);
+        boolean doLander = false;
+        if (doLander) {
+            myRobot.collect.runArm(-1.0f);
+            sleep(1000);
+            myRobot.collect.runArm(0.0f);
+        }
+
+
+
+        /*
+
+        // Then, sample
 
 
         // Then, drive to crater
@@ -42,7 +57,7 @@ public class myAutonomousOpModeNonLoop2 extends LinearOpMode {
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
-        sleep(375);
+        sleep(500);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         //Start sensing colors

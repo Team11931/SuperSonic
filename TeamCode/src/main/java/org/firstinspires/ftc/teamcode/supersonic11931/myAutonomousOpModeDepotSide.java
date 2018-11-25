@@ -10,9 +10,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * THIS IS THE MAIN CLASS FOR TEAM SUPERSONIC'S AUTONOMOUS MODE
  *
  **/
-@Autonomous(name="Supersonic Autonomous (Crater only - from Depot Side)", group ="Supersonic")
+@Autonomous(name="Supersonic Autonomous (Depot Side)", group ="Supersonic")
 // @Disabled
-public class myAutonomousOpModeNonLoop3 extends LinearOpMode {
+public class myAutonomousOpModeDepotSide extends LinearOpMode {
 
     private SupersonicRuckusRobot myRobot;
     private ElapsedTime runtime = new ElapsedTime(); // timer
@@ -35,14 +35,49 @@ public class myAutonomousOpModeNonLoop3 extends LinearOpMode {
 
 
         //When play is pressed, lower robot to ground
-        //myRobot.land.lowerFromLander();
-        //sleep(3000);
-
+        //myRobot.collect.armDrive1.setPower(-1.0f);
+        //myRobot.collect.armDrive2.setPower(1.0f);
+        //sleep(1000);
+        //myRobot.collect.armDrive1.setPower(0.0f);
+        //myRobot.collect.armDrive2.setPower(0.0f);
+        boolean doLander = false;
+        if (doLander) {
+            myRobot.collect.runArm(-1.0f);
+            sleep(1000);
+            myRobot.collect.runArm(0.0f);
+        }
 
         // Then, drive to crater
 
         myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
         sleep(600);
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        sleep(500);
+
+        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
+        sleep(750);
+        myRobot.drive.driveManual(0.0f, 0.0f,0.0f);
+
+        sleep(500);
+
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.2f);
+        sleep(250);
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        sleep(4000);
+
+        //collector arm motion
+        //sleep(500)
+
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.2f);
+        sleep(250);
+        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+        sleep(500);
+
+        myRobot.drive.driveManual(-0.25f, 0.0f, 0.0f);
+        sleep(750);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         sleep(500);

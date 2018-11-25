@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.CollectorArm;
 //import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSensor;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Drivetrain;
+import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.MineralDetector;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Sweeper;
 import com.qualcomm.hardware.bosch.BNO055IMU;
@@ -31,6 +32,7 @@ public class SupersonicRuckusRobot {
     //public ColorDistanceSensor color;
     public CollectorArm collect;
     public Sweeper sweep;
+    public MineralDetector mineral;
 
 
 
@@ -53,13 +55,16 @@ public class SupersonicRuckusRobot {
                 hw.get(BNO055IMU.class, "imu")
         );
 
-        // Init lander
-
-
         // Init collector
         collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive1"), (hw.get(DcMotor.class, "collector_arm_drive2")), (hw.get(DcMotor.class, "elbow_drive")));
 
+        // Init Sweeper
         sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"));
+
+        // Init Mineral Detector
+        mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
+
+
     }
 
 
@@ -70,6 +75,8 @@ public class SupersonicRuckusRobot {
         nav.shutDown();
         //color.shutDown();
         collect.shutDown();
+        mineral.shutDown();
+
 
     }
 

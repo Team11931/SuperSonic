@@ -5,8 +5,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class CollectorArm {
 
-    public DcMotor armDrive1 = null;
-    public DcMotor armDrive2 = null;
+    private DcMotor armDrive1 = null;
+    private DcMotor armDrive2 = null;
     private DcMotor elbowDrive = null;
     //public Sweeper sweeper;
 
@@ -16,7 +16,6 @@ public class CollectorArm {
         armDrive1 = a1;
         armDrive2 = a2;
         elbowDrive = b;
-
 
     }
 
@@ -28,12 +27,6 @@ public class CollectorArm {
         armDrive2.setPower(-JoyStick);
     }
 
-    public void lowerFromLander()
-    {
-        armDrive1.setPower(0.3f);
-        armDrive2.setPower(0.3f);
-
-    }
 
     public void runElbow(float ToggleStick)
     {
