@@ -15,8 +15,10 @@ public class myAutonomousOpModeCraterSide extends LinearOpMode {
     private SupersonicRuckusRobot myRobot;
     private ElapsedTime runtime = new ElapsedTime(); // timer
     private final int AUTONOMOUS_DURATION = 30;
+    private boolean MineralDetectected;
 
-    @Override public void runOpMode() throws InterruptedException {
+    @Override
+    public void runOpMode() throws InterruptedException {
 
         telemetry.addData("Status", "Ruckus Robot starting...");
         telemetry.update();
@@ -37,20 +39,85 @@ public class myAutonomousOpModeCraterSide extends LinearOpMode {
         //sleep(1000);
         //myRobot.collect.armDrive1.setPower(0.0f);
         //myRobot.collect.armDrive2.setPower(0.0f);
-        boolean doLander = false;
+       /* boolean doLander = false;
         if (doLander) {
             myRobot.collect.runArm(-1.0f);
             sleep(1000);
             myRobot.collect.runArm(0.0f);
         }
+*/
 
 
-
-        /*
 
         // Then, sample
 
+        while (MineralDetectected) {
+            myRobot.mineral.runMineralDetector();
 
+            if (myRobot.mineral.goldMineralPosition == "left") {
+                myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
+                sleep(300);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+                sleep(500 / 6);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.0f, 0.4f, 0.0f);
+                sleep(300);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+                sleep((500 / 6) * 5);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                MineralDetectected = false;
+            } else if (myRobot.mineral.goldMineralPosition == "right") {
+                myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
+                sleep(300);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+                sleep(500);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                MineralDetectected = false;
+            } else if (myRobot.mineral.goldMineralPosition == "center") {
+                myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
+                sleep(300);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+                sleep(500 / 6);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.0f, 0.2f, 0.0f);
+                sleep(300);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                sleep(500);
+
+                myRobot.drive.driveManual(0.5f, 0.0f, 0.0f);
+                sleep((500 / 6) * 5);
+                myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+
+                MineralDetectected = false;
+            }
+        }
+
+
+        /*
         // Then, drive to crater
         myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
         sleep(300);
@@ -70,11 +137,11 @@ public class myAutonomousOpModeCraterSide extends LinearOpMode {
             myRobot.drive.driveManual(0.5f, 0.4f, 0.0f);
             sleep(200);
             myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
+*/
 
-
-
+/*
             //If left mineral is silver/ if the right mineral is gold
-            if(myRobot.color.sensorColor.green() >= 18) {
+a            if(myRobot.color.sensorColor.green() >= 18) {
 
                 //drive to far right mineral
                 myRobot.drive.driveManual(0.0f, -0.4f, 0.0f);

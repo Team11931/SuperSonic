@@ -41,7 +41,7 @@ public class SupersonicRuckusRobot {
 
         // Initialize robot components
         // Init Nav (navigation target tracker)
-        nav = new Navigation(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
+        //nav = new Navigation(hw.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hw.appContext.getPackageName()));
 
         // Init color / distance sensor
         //color = new ColorDistanceSensor(hw.get(com.qualcomm.robotcore.hardware.ColorSensor.class, "sensor_color_distance"), hw.get(DistanceSensor.class, "sensor_color_distance"));
@@ -62,7 +62,7 @@ public class SupersonicRuckusRobot {
         sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"));
 
         // Init Mineral Detector
-        //mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
+        mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
 
 
     }
@@ -72,10 +72,10 @@ public class SupersonicRuckusRobot {
 
         // Shut down all robot components
         drive.shutDown();
-        nav.shutDown();
+        //nav.shutDown();
         //color.shutDown();
         collect.shutDown();
-        //mineral.shutDown();
+        mineral.shutDown();
 
 
     }

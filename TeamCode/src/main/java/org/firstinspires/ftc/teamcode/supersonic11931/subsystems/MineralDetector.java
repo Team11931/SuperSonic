@@ -52,7 +52,7 @@ public class MineralDetector {
     private static final String LABEL_GOLD_MINERAL = "Gold Mineral";
     private static final String LABEL_SILVER_MINERAL = "Silver Mineral";
     private static final String VUFORIA_KEY = "AXhY3rj/////AAABmSr8AnqSNEdisrT+u0t2GXJal+c5n21PmSqP9Drt8C6itKGmSfXhWjZhvTnuR6aqI0fu0J9nnpL17VEcbAtTXpwz3rBiuI0ygjssBqTvu5RgyFgQEdB6AZpuCiJaatcpn7YVVCsCKxDy7ldoCC3DOBL0Xmnyp6dhDJAQ9dOnQjvoIkYMq3VsQj97X67s2aqP6U0TnyS6CQ6/xv4QnhqbvW2tGhkD+TfjqJDMmKurs/+CnrZsxAEhL3DSfFKjtd1wkeGxSQtF3gwKnqP8xRKt8wvMB271kCmdEph6LSGiS6P0+ThPLZzJiLImqaEqYGibKUpxJNhY5XgVz91o1LqUqQc8H1dLrTIM5Pez7+2FYzKD";
-
+    public static String goldMineralPosition = null;
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
      * localization engine.
@@ -115,14 +115,17 @@ public class MineralDetector {
                     }
                     if (goldMineralX != -1 && silverMineral1X != -1 && silverMineral2X != -1) {
                         if (goldMineralX < silverMineral1X && goldMineralX < silverMineral2X) {
-                           // telemetry.addData("Gold Mineral Position", "Left");
+                            // telemetry.addData("Gold Mineral Position", "Left");
                             telemetryData = "Gold Mineral Position is Left";
+                            goldMineralPosition = "left";
                         } else if (goldMineralX > silverMineral1X && goldMineralX > silverMineral2X) {
-                           // telemetry.addData("Gold Mineral Position", "Right");
+                            // telemetry.addData("Gold Mineral Position", "Right");
                             telemetryData = "Gold Mineral Position is Right";
+                            goldMineralPosition = "right";
                         } else {
-                           // telemetry.addData("Gold Mineral Position", "Center");
+                            // telemetry.addData("Gold Mineral Position", "Center");
                             telemetryData = "Gold Mineral Position is Center";
+                            goldMineralPosition = "center";
                         }
                     }
                 }
