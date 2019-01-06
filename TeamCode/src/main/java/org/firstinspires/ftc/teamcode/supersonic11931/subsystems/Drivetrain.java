@@ -83,10 +83,10 @@ public class Drivetrain {
             rotation *= SLOW_MOTION;
         }
 
-        frontLeftPower = -(speed * Math.cos(direction) + rotation);
-        frontRightPower = speed * Math.sin(direction) - rotation;
-        rearLeftPower = -(speed * Math.sin(direction) + rotation);
-        rearRightPower = speed * Math.cos(direction) - rotation;
+        frontLeftPower = (speed * Math.cos(direction) + rotation);
+        frontRightPower = -(speed * Math.sin(direction) - rotation);
+        rearLeftPower = (speed * Math.sin(direction) + rotation);
+        rearRightPower = -(speed * Math.cos(direction) - rotation);
 
         frontLeftMotor.setPower(frontLeftPower);
         frontRightMotor.setPower(frontRightPower);
@@ -218,7 +218,7 @@ public class Drivetrain {
 
 
     public double getRawHeading() {
-    //private double getRawHeading() {
+        //private double getRawHeading() {
         return angles.firstAngle;
     }
 

@@ -7,15 +7,15 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class Sweeper {
 
     private DcMotor sweeperDrive = null;
-    //private DcMotor sweeperDrive2 = null;
+    private Servo sweeperRelease = null;
     private LinearOpMode opMode;
 
 
     // Constructor method
-    public Sweeper(DcMotor m) {
+    public Sweeper(DcMotor m, Servo n) {
 
         sweeperDrive = m;
-        //sweeperDrive2 = n;
+        sweeperRelease = n;
 
     }
 
@@ -37,6 +37,15 @@ public class Sweeper {
 
 
 
+    }
+
+    public void runRelease(boolean O, boolean C){
+        if (O){
+            sweeperRelease.setPosition(0.2);
+        }
+        else if (C){
+            sweeperRelease.setPosition(0);
+        }
     }
 }
 

@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.CollectorArm;
 //import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.ColorDistanceSensor;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Drivetrain;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.MineralDetector;
-import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
+//import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.MineralDetector;
+//import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Navigation;
 import org.firstinspires.ftc.teamcode.supersonic11931.subsystems.Sweeper;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 
@@ -27,12 +27,12 @@ public class SupersonicRuckusRobot {
 
     public boolean isLanded = false;
 
-    public Navigation nav;
+    //public Navigation nav;
     public Drivetrain drive;
     //public ColorDistanceSensor color;
     public CollectorArm collect;
     public Sweeper sweep;
-    public MineralDetector mineral;
+    //public MineralDetector mineral;
 
 
 
@@ -56,13 +56,13 @@ public class SupersonicRuckusRobot {
         );
 
         // Init collector
-        collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive1"), (hw.get(DcMotor.class, "collector_arm_drive2")), (hw.get(DcMotor.class, "elbow_drive")));
+        collect = new CollectorArm(hw.get(DcMotor.class, "collector_arm_drive1"), (hw.get(DcMotor.class, "collector_arm_drive2")), (hw.get(DcMotor.class, "elbow_drive")) /*(hw.get(Servo.class, "hold_drive" ))*/);
 
         // Init Sweeper
-        sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"));
+        // sweep = new Sweeper(hw.get(DcMotor.class, "sweeper_drive"), hw.get(Servo.class, "SweeperRelease"));
 
         // Init Mineral Detector
-        mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
+        //mineral = new MineralDetector(hw.appContext.getResources().getIdentifier("tfodMonitorViewId", "id", hw.appContext.getPackageName()));
 
 
     }
@@ -75,7 +75,7 @@ public class SupersonicRuckusRobot {
         //nav.shutDown();
         //color.shutDown();
         collect.shutDown();
-        mineral.shutDown();
+        //mineral.shutDown();
 
 
     }

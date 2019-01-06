@@ -28,80 +28,54 @@ public class myAutonomousOpModeDepotSide extends LinearOpMode {
         telemetry.addData("Status", "Ruckus Robot successfully INITIALIZED; waiting for start");
         telemetry.update();
 
-        this.waitForStart(); // Wait for driver to press PLAY from driver station
+        // this.waitForStart(); // Wait for driver to press PLAY from driver station
+        while(!opModeIsActive() && !isStopRequested())
+        {
+            telemetry.addData("Status", "Waiting for start command");
+        }
         runtime.reset(); // start the timer
         telemetry.addData("Status", "Ruckus Robot RUNNING in Autonomous Mode");
         telemetry.update();
 
 
         //When play is pressed, lower robot to ground
-        //myRobot.collect.armDrive1.setPower(-1.0f);
-        //myRobot.collect.armDrive2.setPower(1.0f);
-        //sleep(1000);
-        //myRobot.collect.armDrive1.setPower(0.0f);
-        //myRobot.collect.armDrive2.setPower(0.0f);
-        boolean doLander = false;
+        boolean doLander = true;
         if (doLander) {
-            myRobot.collect.runArm(-1.0f);
-            sleep(1000);
+            myRobot.collect.runArm(0.5f);
+            sleep(300);
             myRobot.collect.runArm(0.0f);
+
+            myRobot.collect.holdArmDrive.setPosition(20);
+            sleep(1000);
+
+            myRobot.collect.runArm(-1.0f);
+            sleep(500);
+            myRobot.collect.runArm(0.0f);
+
+            myRobot.collect.holdArmDrive.setPosition(0.625);
+            sleep(1000);
         }
-
-        // Then, drive to crater
-
-        myRobot.drive.driveManual(0.0f, -0.2f, 0.0f);
-        sleep(600);
+        //Turn
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.1f);
+        sleep(715);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
         sleep(500);
 
-        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
-        sleep(750);
-        myRobot.drive.driveManual(0.0f, 0.0f,0.0f);
-
-        sleep(500);
-
-        myRobot.drive.driveManual(0.0f, 0.0f, -0.2f);
-        sleep(250);
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
-        sleep(4000);
-
-        //collector arm motion
-        //sleep(500)
-
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.2f);
-        sleep(250);
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
-        sleep(500);
-
+        //Drive forward
         myRobot.drive.driveManual(-0.25f, 0.0f, 0.0f);
-        sleep(750);
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
-        sleep(500);
-
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.1f);
-        sleep(500);
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
-        sleep(500);
-
-        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
         sleep(900);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
         sleep(500);
 
-        myRobot.drive.driveManual(0.0f, 0.0f, 0.125f);
-        sleep(1050);
+        //Turn
+        myRobot.drive.driveManual(0.0f, 0.0f, -0.125f);
+        sleep(850);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
-
         sleep(500);
 
-        myRobot.drive.driveManual(0.25f, 0.0f, 0.0f);
-        sleep(1400);
+        //Drive forward
+        myRobot.drive.driveManual(-0.25f, 0.0f, 0.0f);
+        sleep(750);
         myRobot.drive.driveManual(0.0f, 0.0f, 0.0f);
 
         // When crater is reached, stop the robot

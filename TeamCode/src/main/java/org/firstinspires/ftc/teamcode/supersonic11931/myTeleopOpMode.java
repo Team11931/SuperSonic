@@ -27,19 +27,26 @@ public class myTeleopOpMode extends LinearOpMode {
         telemetry.update();
 
         myRobot = new SupersonicRuckusRobot(this.hardwareMap); // instantiate robot object
-        while (!myRobot.drive.isGyroCalibrated())
-        {
-            sleep(1000);
-        }
+        //while (!myRobot.drive.isGyroCalibrated())
+        //{
+        //  sleep(1000);
+        //}
         telemetry.addData("Status", "Ruckus Robot successfully INITIALIZED; waiting for start");
         telemetry.update();
 
-        this.waitForStart(); // Wait for driver to press PLAY from driver station
+        // this.waitForStart(); // Wait for driver to press PLAY from driver station
+        while(!opModeIsActive() && !isStopRequested())
+        {
+            telemetry.addData("Status", "Waiting for start command");
+        }
+
+
         telemetry.addData("Status", "Ruckus Robot RUNNING in Teleop Mode");
         telemetry.update();
 
         // Loop until driver presses STOP from driver station
         while (opModeIsActive()) {
+
 
             // NaRobot.nav.trackTargets();
             //telemetry.addData("Visible Target", myRobot.nav.getVisibleTarget());
@@ -75,17 +82,17 @@ public class myTeleopOpMode extends LinearOpMode {
 
 
             myRobot.drive.refreshGyro();
-            telemetry.addData("IMU Angle", myRobot.drive.getHeadingDegrees());
+            //telemetry.addData("IMU Angle", myRobot.drive.getHeadingDegrees());
             myRobot.drive.driveManual(this.gamepad1.left_stick_y, this.gamepad1.left_stick_x, this.gamepad1.right_stick_x, this.gamepad1.right_bumper);
 
             // Collector Arm....
             myRobot.collect.runArm(this.gamepad2.left_stick_y);
-            myRobot.collect.runElbow(this.gamepad2.right_stick_y);
-
+            // myRobot.collect.runElbow(this.gamepad2.right_stick_y);
+            //myRobot.collect.runHold(this.gamepad2.a, this.gamepad2.b);
 
             // Sweeper....
-            myRobot.sweep.runSweeper(this.gamepad2.right_bumper, this.gamepad2.left_bumper);
-
+            //  myRobot.sweep.runSweeper(this.gamepad2.right_bumper, this.gamepad2.left_bumper);
+            // myRobot.sweep.runRelease(this.gamepad2.dpad_up, this.gamepad2.dpad_down);
             telemetry.update();
         }
 
